@@ -1,95 +1,97 @@
 const perguntas = [
     {
-        pergunta: "O que significa 'renovar a nossa mente?",
+        pergunta: "Quem é o sucessor do profeta Elias?",
         respostas: [
-            "Exibir uma mensagem de erro",
-            "Não podemos simplesmente “enfeitar” nossa vida com algumas boas ações.Precisamos examinar a pessoa que somos no coração e fazer as mudanças necessárias para agradar a Jeová",
-            "Criar uma variável"
+            "Samuel",
+            "Eliseu",
+            "Saul"
         ],
         correta: 1
     },
     {
-        pergunta: "Como podemos mostrar equilíbrio ao acompanhar o que acontece no mundo?",
+        pergunta: "Mulher por quem Sansão se apaixonou?",
         respostas: [
-            "Comparação de valores sem considerar o tipo",
-            "Atribuição de valores",
-            "Nós nos interessamos pelo que está acontecendo no mundo porque muitas coisas estão cumprindo profecias bíblicas. Mas em vez de tentar adivinhar o que vai acontecer, seria melhor nos manter atualizados com as informações da organização de Jeová."
+            "Ana",
+            "Raquel",
+            "Dalila"
         ],
         correta: 2
     },
     {
-        pergunta: "Como se declara uma variável em JavaScript?",
+        pergunta: "Neto de Arão que traspassou Zinri e Cosbi com uma lança, por ‘não tolerar rivalidade para com Jeová’?",
         respostas: [
-            "let myVar;",
-            "const myVar = 10;",
-            "ambas as opções acima estão corretas"
+            "Josué",
+            "Absalão",
+            "Finéias"
         ],
         correta: 2
     },
     {
-        pergunta: "O que é uma função em JavaScript?",
+        pergunta: "Qual Profeta de Jeová incentivou os israelitas a ‘rasgar os corações e não as vestes, e retornar a Jeová’?",
         respostas: [
-            "Um tipo de dado",
-            "Um bloco de código reutilizável",
-            "Uma variável global"
+            "Samuel",
+            "Joel",
+            "Habacuque"
         ],
         correta: 1
     },
     {
-        pergunta: "Qual é a diferença entre 'let' e 'const' na declaração de variáveis?",
+        pergunta: "Primeiro juiz citado por nome depois de Josué?",
         respostas: [
-            "Nenhuma, são sinônimos",
-            "let é usado para valores constantes, const para variáveis",
-            "let permite reatribuição, const cria variáveis imutáveis"
+            "Sansão",
+            "Davi",
+            "Otniel"
         ],
         correta: 2
     },
     {
-        pergunta: "O que é o DOM em JavaScript?",
+        pergunta: "Uma das esposas de Abraão, mãe de seis filhos?",
         respostas: [
-            "Um método de criptografia",
-            "Um modelo de objeto para manipular documentos HTML",
-            "Uma linguagem de programação"
+            "Agar",
+            "Quetura",
+            "Midiã"
         ],
         correta: 1
     },
     {
-        pergunta: "Como se realiza uma iteração sobre os elementos de um array em JavaScript?",
+        pergunta: "Profissional egípcio morto durante a celebração de aniversário de Faraó?",
         respostas: [
-            "Usando a estrutura 'if-else'",
-            "Com a declaração 'switch'",
-            "Utilizando loops como 'for' ou 'forEach'"
+            "Cozinheiro",
+            "Copeiro",
+            "Padeiro"
         ],
         correta: 2
     },
     {
-        pergunta: "O que é o JSON em JavaScript?",
+        pergunta: " Primeira cidade cananéia conquistada pelos israelitas?",
         respostas: [
-            "Um método de formatação de texto",
-            "Uma linguagem de estilização",
-            "Um formato de dados leve e intercambiável"
+            "Sodoma",
+            "Caná",
+            "Jericó"
         ],
         correta: 2
     },
     {
-        pergunta: "Qual é a diferença entre 'null' e 'undefined' em JavaScript?",
+        pergunta: "Serva de Raquel e esposa secundária de Jacó?",
         respostas: [
-            "São iguais, usados de forma intercambiável",
-            "'null' representa a ausência de valor, 'undefined' é atribuído explicitamente",
-            "Ambos representam valores vazios"
+            "Léia",
+            "Bila",
+            "Miriã"
         ],
         correta: 1
     },
     {
-        pergunta: "Como se adiciona um evento a um elemento HTML usando JavaScript?",
+        pergunta: "Rei de Israel, avô de Atalia?",
         respostas: [
-            "Apenas com CSS",
-            "Usando o atributo 'event'",
-            "Através do método 'addEventListener'"
+            "Itai",
+            "Acazias",
+            "Onri"
         ],
         correta: 2
     },
 ];
+
+
 
 const quiz = document.querySelector('#quiz')
 const template = document.querySelector('template')
@@ -99,6 +101,7 @@ const totalDePerguntas = perguntas.length
 const mostrarTotal = document.querySelector('#acertos span')
 mostrarTotal.textContent = corretas.size + 'de ' + totalDePerguntas
 
+
 // loop ou laço de repetição
 for (const item of perguntas) {
     const quizItem = template.content.cloneNode(true)
@@ -107,6 +110,7 @@ for (const item of perguntas) {
     for (let resposta of item.respostas) {
         const dt = quizItem.querySelector('dl dt').cloneNode(true)
         dt.querySelector('span').textContent = resposta
+
         //seleciona 1 resposta de cada pergunta
         dt.querySelector('input').setAttribute('name', 'pergunta-' + perguntas.indexOf(item))
         dt.querySelector('input').value = item.respostas.indexOf(resposta)
@@ -119,17 +123,40 @@ for (const item of perguntas) {
                 corretas.add(item)
             }
             mostrarTotal.textContent = corretas.size + ' de ' + totalDePerguntas
+
+            // Verifica se todas as respostas estão corretas
+            if (corretas.size === totalDePerguntas) {
+                startConfettiAnimation();
+            }
         }
 
 
-
         quizItem.querySelector('dl').appendChild(dt)
-    }
 
+
+
+    }
 
     quizItem.querySelector('dl dt').remove()
 
 
     // coloca a pergunta na tela
     quiz.appendChild(quizItem)
+
+
+}
+
+function startConfettiAnimation() {
+    var confetti = document.getElementById('confetti');
+    confetti.innerHTML = '';
+    var colors = ['#29088A', '#0431B4', '#0174DF', '#01A9DB', '#088A85', '#04B486', '#CECEF6', '#CEE3F6']; // Lista de cores para os quadradinhos
+
+    for (var i = 0; i < 200; i++) {
+        var confettiPiece = document.createElement('div');
+        confettiPiece.className = 'confetti-piece';
+        confettiPiece.style.left = Math.random() * 100 + 'vw';
+        confettiPiece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)]; // Escolhe uma cor aleatória da lista
+        confettiPiece.style.animationDelay = Math.random() * 8 + 's';
+        confetti.appendChild(confettiPiece);
+    }
 }
