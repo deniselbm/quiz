@@ -14,8 +14,12 @@
     -webkit-text-size-adjust: 100%;
 }
 
-body {
-    background-color: #0F172A;
+
+
+.artequiz {
+    background-image: url("../img/bibliajw.jpg");
+    background-size: contain;
+
 }
 
 main {
@@ -97,7 +101,7 @@ header h1 {
 
 input {
     all: unset;
-    border: 1px solid #94a3b8;
+    border: 1px solid #1e293B;
     width: 16px;
     height: 16px;
 
@@ -111,7 +115,7 @@ input {
 }
 
 input:checked {
-    border: 1px solid #A3E635;
+    border: 1px solid #b7b0f7;
 }
 
 input:checked:before {
@@ -119,18 +123,78 @@ input:checked:before {
     width: 10px;
     height: 10px;
 
-    background-color: #A3E635;
+    background-color: #6f68ee;
     border-radius: 50%;
 }
 
 
 #acertos {
     text-align: center;
-    background-color: #A3E635;
+    background-color: #6f68ee;
 
     position: fixed;
     bottom: 0;
     left: 0;
+
+    width: 100%;
+    padding: 12px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#confetti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+
+
+    animation: confettiAnimation 10s ease-in-out infinite;
+}
+
+@keyframes confettiAnimation {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+footer p {
+    background-color: #1e293B;
+    color: #b7b0f7;
+    padding: 30px;
+
+
+    /* Espaçamento interno */
+    text-align: center;
+    /* Alinhamento do texto */
+}
+
+.nome {
+    margin-bottom: 35px;
+}
 
     width: 100%;
     padding: 12px;
